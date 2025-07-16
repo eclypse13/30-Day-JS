@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Panels 💪</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+  <style>
+    html {
+      box-sizing: border-box;
+      background: #ffc600;
+      font-family: 'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    .panels {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .panel {
+      background: #6B0F9C;
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+      color: white;
+      text-align: center;
+      align-items: center;
+      /* Safari transitionend event.propertyName === flex */
+      /* Chrome + FF transitionend event.propertyName === flex-grow */
+      transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+      font-size: 20px;
+      background-size: cover;
+      background-position: center;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel1 { background-image:url(https://avatars.mds.yandex.net/i?id=a28a459759a9e2d6f18d717e94984e441f2e1383-5233868-images-thumbs&n=13); }
+    .panel2 { background-image:url(https://avatars.mds.yandex.net/i?id=8b91a8687e0c75586d70ee1fd6ca568d6e9fb651-7054524-images-thumbs&n=13); }
+    .panel3 { background-image:url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d); }
+    .panel4 { background-image:url(https://avatars.mds.yandex.net/i?id=47661bc09007031324e69174a69b3183798928e8-4978136-images-thumbs&n=13); }
+    .panel5 { background-image:url(https://yandex-images.clstorage.net/5keY61L32/9d354eaGv/F_22XA2CSyzYtG6GseJwCCXsNshJ599WFbnCS1EnuQqa224LlvZYCQJGpbyyPc5fzzkc2tfcGWzya3dXYmCJyweo8208l1tBucV67-HCfBwtmUPEDZa3R2HQyztoPsxX55ovrg8nmdCu_nRRYoFje95NCMv_uQE1V_M6qgJgeCuDAfLMbcbmgMj0rwYBclDYKRmCkIFiP_dtQX-f8PsAOr6DS5ozG5HITuqwxTbte6MyKcAL0pl9BYeeAg7qVDjbD-EKVE2qzsSMaK-WmXIE0FGZUqDZ-vvvAT2XuxSriKaKF6uGv4uNfH7GHGU-xVejOpGAFza90U07EnJO_ix43zd5UoCBFr7UcAQPIs167Ag1KZqs8fLb24EZ618UJ-BigjtfGtP_JbDeCmhNHhV3S06lAPv-4QUxh5KKMvZgtA8f5XYklaqmBPy8D6rR1lxIgQUuMDXqL0_JpeNvAKuUhvaXT5rXh0nMkmok8Tbxs1c67cD7siVZfXeKIk7-XMC3B_VaXM3mgvwEaG8m7e5MsH01bsTRkvs7IUWfp8CzGLZGh6dyNxsVYGamsElyBYvPmjUEi4INcX1DVt4muqBYg1cdPhxFwh7ErLQDgoFK-LDpWbLscS5PK32V_1tQO7iurhO_lpMHsfS2Dghl5kEP14qd3HPOkeU994pusop4tBuvcRa4PdrWsKSU_6bRxpC0PUHOrEk-y_tVueuDbLvA1hZP5xLnK3VUmo70PVa11yf-EbAHNpVxuW_mUloawBiDh_XqiC2GKgRQRDPe0Y6o3A0d1jwFmid7WUH3XzSXrPJKdzd-_w8pjLqWLBHifeuzlp0AY35FlT176nrC6siwtyMhgqChVs6kSByX9pFa1FARHUqY5V7fW0WxD6uIt7RaQn9P4qMbWQRydpDNyhF3S9YtVNu2vZFlrzpmQnoUqDMHYSas6dKCJKwg86pxTpA0ZYlW9H1e-ydByUtbGGto); }
+
+    /* Flex Children */
+    .panel > * {
+      margin: 0;
+      width: 100%;
+      transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel > *:first-child {
+      transform: translateX(-100%);
+    }
+    .panel.open-active >:first-child {
+      transform: translateX(0);
+    }
+    .panel > *:last-child {
+      transform: translateX(100%);
+    }
+    .panel.open-active > *:last-child {
+      transform: translateX(0);
+    }
+
+    .panel p {
+      text-transform: uppercase;
+      font-family: 'Amatic SC', cursive;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+      font-size: 2em;
+    }
+
+    .panel p:nth-child(2) {
+      font-size: 4em;
+    }
+
+    .panel.open {
+      flex: 5;
+      font-size: 40px;
+    }
+
+  </style>
+
+
+  <div class="panels">
+    <div class="panel panel1">
+      <p>Hey</p>
+      <p>Let's</p>
+      <p>Dance</p>
+    </div>
+    <div class="panel panel2">
+      <p>Give</p>
+      <p>Take</p>
+      <p>Receive</p>
+    </div>
+    <div class="panel panel3">
+      <p>Experience</p>
+      <p>It</p>
+      <p>Today</p>
+    </div>
+    <div class="panel panel4">
+      <p>Give</p>
+      <p>All</p>
+      <p>You can</p>
+    </div>
+    <div class="panel panel5">
+      <p>Life</p>
+      <p>In</p>
+      <p>Motion</p>
+    </div>
+  </div>
+
+  <script>
+    const panels = document.querySelectorAll(".panel");
+
+    function toggleOpen() {
+      this.classList.toggle("open");
+    }
+
+    function toggleActive(e) {
+      if (e.propertyName.includes("flex")) {
+        this.classList.toggle("open-active");
+      }
+    }
+
+    panels.forEach(panel => panel.addEventListener("click", toggleOpen));
+    panels.forEach(panel => panel.addEventListener("transitionend", toggleActive));
+
+  </script>
+</body>
+</html>
