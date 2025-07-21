@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log("Hello!");
+
+    // Interpolated
+    console.log("Hello, I am %s ", "Sergey");
+
+    const name = "Sergey";
+    console.log(`Hello, I am ${name}`);
+
+    // Styled
+    console.log("%c I am some great text", "font-size: 40px; color: red;")
+
+    // warning!
+    console.warn("Oh nooo! It's warning.");
+
+    // Error :|
+    console.error("It's error. Please, change this.");
+
+    // Info
+    console.info("Some info here...");
+
+    // Testing
+    const p = document.querySelector("p");
+    console.assert(p.classList.contains("class"), "Paragraph has no class class!");
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach(item => {
+      console.groupCollapsed(`${item.name}`);
+      console.log(`This is ${item.name}.`);
+      console.log(`${item.name} is ${item.age} years old.`);
+      console.log(`${item.name} is ${item.age * 7} dog years old.`);
+      console.groupEnd(`${item.name}`);
+    });
+
+    // counting
+    console.count("Smth.");
+    console.count("Smth.");
+    console.count("Other smth.");
+    console.count("Other smth.");
+    console.count("Smth.");
+    console.count("Other smth.");
+    console.count("Smth.");
+    console.count("Smth.");
+    console.count("Smth.");
+    console.count("Other smth.");
+    console.count("Other smth.");
+    console.count("Other smth.");
+    console.count("Other smth.");
+    console.count("Smth.");
+    console.count("Smth.");
+    console.count("Other smth.");
+
+    // timing
+    console.time("Fetching Data");
+    fetch("https://api.github.com/users/eclypse13")
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd("Fetching Data");
+      console.log(data);
+    })
+
+    
+
+    console.table(dogs)
+
+  </script>
+</body>
+</html>
